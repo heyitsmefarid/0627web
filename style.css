@@ -1,0 +1,560 @@
+/* Part 1: Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial, sans-serif';
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+header.sticky {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+}
+
+.logo img:hover {
+    transform: rotate(360deg);
+}
+
+.nav-menu {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: #fff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-menu a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.nav-menu a:hover {
+    color: #fff;
+}
+
+.cta .btn-order {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.cta .btn-order:hover {
+    background-color: #e67e22;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Part 2: Hero Section */
+.hero {
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+    color: #fff;
+    position: relative;
+    animation: heroFadeIn 2s ease-in-out;
+    filter: contrast(1.5); 
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-logo {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background-color: #feb47b;
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-logo img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 50%;
+    margin-left: 30%;
+    text-align: left;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+    background-color: #f39c12;
+    color: black;
+}
+
+.hero-buttons .btn-primary:hover {
+    background-color: #bf3;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .btn-secondary {
+    background-color: #f39c12;
+    color: black;
+}
+
+.hero-buttons .btn-secondary:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Part 3: Menu Section */
+
+.menu-section {
+    padding: 80px 0;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    filter: contrast(1.5);
+}
+
+.menu-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Reduced gap between menu items */
+    position: relative;
+    z-index: 2;
+}
+
+.menu-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px; /* Adjusted shape of the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover img {
+    transform: scale(1.1);
+}
+
+.menu-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 15px 0;
+}
+
+.menu-item p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0 15px 15px;
+}
+
+.menu-item .price {
+    font-size: 1.2rem;
+    color: #8e44ad;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.prices-container {
+  align-content: center;
+  justify-content: center;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Reduced gap between price and topping boxes */
+    margin-top: 20px; /* Adjusted top margin */
+}
+
+.prices-container .price,
+.prices-container .topping {
+    background-color: #feb47b;
+    border-radius: 10px; /* Adjusted shape of the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Reduced padding */
+    width: calc(30% - 5px); /* Adjusted width to fit better within container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+.prices-container .price h4,
+.prices-container .topping h4 {
+    font-size: 1.8rem;
+    color: black;
+    margin: 10px 0;
+}
+
+.prices-container .price p,
+.prices-container .topping p {
+    font-size: 1.5rem;
+    color: #666;
+    margin: 5px 0; /* Adjusted margin for consistent spacing */
+}
+
+.prices-container .price:hover,
+.prices-container .topping:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* Prices */
+
+
+.portfolio-section {
+    padding: 80px 20px; /* Set the background color */
+    background-image: url('bg.jpg'); /* Set the background image */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    filter: contrast(1.8);
+}
+/* Part 4: About Us Section */
+.about-us-section {
+    padding: 80px;
+    background-image: url('bg.jpg'); /* Background image same as the hero section */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    filter: contrast(1.5);
+}
+
+.about-us-section .section-title {
+    font-size: 4 rem;
+    margin-bottom: 40px;
+}
+
+.about-us-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    color: #fff; /* Text color changed to white */
+    line-height: 1.8;
+    font-size: 1.4rem;
+    text-align: left; /* Align text to left */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border-radius */
+}
+.about-us-logo {
+    float: left; /* Float the logo to the left */
+    margin-right: 20px;
+    padding: 10px; /* Add padding around the logo */
+    border: 2px solid #fff; /* Add a border */
+    border-radius: 10px; /* Round the corners */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Add a background gradient */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.about-us-logo img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Round the corners of the image slightly */
+}
+
+.about-us-logo:hover {
+    transform: scale(1.05); /* Slightly enlarge the logo on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+} /* Add margin to separate from text */
+}
+/* Part 5: Portfolio Section */
+.portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-box {
+    width: 200px; /* Set the width of each project box */
+    height: 200px; /* Set the height of each project box */
+    background-color: rgba(255, 255, 255, 0.9); /* Set the background color of each project box */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+}
+
+.project-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* Part 5: Portfolio Section */
+.portfolio-section {
+    padding: 80px 20px;
+    background-color: rgba(142, 68, 173, 0.7); /* Set the background color */
+    background-image: url('bg.jpg'); /* Set the background image */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    filter: contrast(1.5);
+}
+
+.portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-box {
+    width: 150px; /* Set the width of each project box */
+    height: 150px; /* Set the height of each project box */
+    background-color: #feb47b; /* Set the background color of each project box */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+    font-size: 30px;
+}
+
+.project-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Part 6: Contact Us Section */
+.contact-section {
+    padding: 80px 20px; 
+    background-color: rgba(142, 68, 173, 0.7); /* Same background color as the portfolio section */
+    background-image: url('bg.jpg'); /* Background image same as the portfolio section */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    filter: contrast(1.5);
+}
+
+.contact-section .section-title {
+    font-size: 2.5rem;
+    color: #fff; /* Text color changed to white */
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f39c12; /* Form background color */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border-radius */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form input[type="submit"] {
+    color: #fff;
+    background-color: rgba(142, 68, 173, 0.7); /* Same background color as the contact section */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.contact-item {
+    margin-bottom: 50px;
+    color: #fff;
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.logo {
+    display: inline-block;
+    margin-right: 20px; /* Adjust the margin-right according to your design */
+    width: 90px;
+    height: auto;
+}
+
+.contact-info p {
+    margin-bottom: 50px; /* Add margin below each paragraph */
+}
+
+.social-media i {
+    font-size: 40px; /* Adjust the size as needed */
+}
+.contact-form input[type="submit"]:hover {
+    background-color: rgba(142, 68, 173, 1); /* Darker background color on hover */
+}
